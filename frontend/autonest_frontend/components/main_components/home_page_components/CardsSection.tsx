@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function CardsSection() {
   return (
     <div className="bg-[#0D0D0D] py-24">
@@ -14,14 +16,16 @@ export default function CardsSection() {
         </div>
 
         {/* Cards */}
-        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-3">
+        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-12 lg:grid-cols-3">
           
           {/* Card 1 */}
           <div className="flex flex-col items-center rounded-2xl bg-[#1A1A1A] p-8 text-center shadow-lg transform transition duration-300 hover:-translate-y-2 hover:scale-105">
-            <img
+            <Image
               src="/certificate.png"
               alt="Certified Quality"
-              className="mb-6 h-20 w-20 object-contain"
+              width={80}
+              height={80}
+              className="mb-6 object-contain"
             />
             <h3 className="text-xl font-semibold text-white">
               Certified Quality
@@ -34,10 +38,12 @@ export default function CardsSection() {
 
           {/* Card 2 */}
           <div className="flex flex-col items-center rounded-2xl bg-[#1A1A1A] p-8 text-center shadow-lg transform transition duration-300 hover:-translate-y-2 hover:scale-105">
-            <img
+            <Image
               src="/stock.png"
               alt="Premium Selection"
-              className="mb-6 h-20 w-20 object-contain"
+              width={80}
+              height={80}
+              className="mb-6 object-contain"
             />
             <h3 className="text-xl font-semibold text-white">
               Premium Selection
@@ -50,10 +56,12 @@ export default function CardsSection() {
 
           {/* Card 3 */}
           <div className="flex flex-col items-center rounded-2xl bg-[#1A1A1A] p-8 text-center shadow-lg transform transition duration-300 hover:-translate-y-2 hover:scale-105">
-            <img
+            <Image
               src="/team.png"
               alt="Expert Team"
-              className="mb-6 h-20 w-20 object-contain"
+              width={80}
+              height={80}
+              className="mb-6 object-contain"
             />
             <h3 className="text-xl font-semibold text-white">
               Expert Team
@@ -69,5 +77,6 @@ export default function CardsSection() {
     </div>
   )
 }
+
 
 
