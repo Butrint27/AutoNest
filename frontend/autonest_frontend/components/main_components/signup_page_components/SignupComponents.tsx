@@ -88,7 +88,7 @@ export default function SignupComponents() {
           <div>
             <button
               type="submit"
-              className="w-full flex justify-center rounded-xl bg-[#D4AF37] px-4 py-3 font-semibold text-black hover:bg-yellow-500 hover:scale-105 transition transform shadow-md"
+              className="w-full flex justify-center rounded-xl bg-[#D4AF37] px-4 py-3 font-semibold text-black hover:bg-yellow-500 hover:scale-105 transition transform shadow-md cursor-pointer"
             >
               Sign Up
             </button>

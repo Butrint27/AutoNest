@@ -1,8 +1,19 @@
-'use client' // Required for Next.js client components
+'use client'
+import Link from "next/link"
+
+ // Required for Next.js client components
 
 export default function ContactComponent() {
   return (
     <div className="min-h-screen w-full bg-[#0D0D0D] flex items-center justify-center px-6 py-24">
+        {/* Fancy Back Link */}
+      <div className="absolute top-6 left-6 z-50">
+        <Link href="/">
+          <span className="flex items-center bg-[#1a1a1a] hover:bg-[#2c2c2c] text-[#D4AF37] hover:text-yellow-400 font-semibold px-4 py-2 rounded-lg shadow-md cursor-pointer transition duration-200">
+            ← Back
+          </span>
+        </Link>
+      </div>
       {/* Background Glow */}
       <div
         aria-hidden="true"
@@ -124,8 +135,10 @@ export default function ContactComponent() {
             Let us talk
           </button>
         </form>
+        
       </div>
     </div>
+    
   )
 }
 

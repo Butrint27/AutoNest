@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function SigninComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#0D0D0D] px-4 py-12">
-            {/* Fancy Back Link */}
+      {/* Fancy Back Link */}
       <div className="absolute top-6 left-6 z-50">
         <Link href="/">
           <span className="flex items-center bg-[#1a1a1a] hover:bg-[#2c2c2c] text-[#D4AF37] hover:text-yellow-400 font-semibold px-4 py-2 rounded-lg shadow-md cursor-pointer transition duration-200">
@@ -55,7 +55,7 @@ export default function SigninComponent() {
           <div>
             <button
               type="submit"
-              className="w-full flex justify-center rounded-xl bg-[#D4AF37] px-4 py-3 font-semibold text-black hover:bg-yellow-500 hover:scale-105 transition transform shadow-md"
+              className="w-full flex justify-center rounded-xl bg-[#D4AF37] px-4 py-3 font-semibold text-black hover:bg-yellow-500 hover:scale-105 transition transform shadow-md cursor-pointer" 
             >
               Sign In
             </button>

@@ -6,10 +6,10 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Inventory', href: '#' },
-  { name: 'Services', href: '#' },
+  { name: 'Inventory', href: '/inventory' },
+  { name: 'Services', href: '/services' },
   { name: 'About', href: '/about' },
-  { name: 'Contact', href: '#' },
+  { name: 'Contact', href: '/contact' },
 ]
 
 export default function HeroSection() {
