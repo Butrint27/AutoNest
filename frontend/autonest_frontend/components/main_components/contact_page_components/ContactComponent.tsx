@@ -1,19 +1,89 @@
 'use client'
-import Link from "next/link"
 
- // Required for Next.js client components
+import { useState } from 'react'
+import Link from 'next/link'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Footer from "../home_page_components/Footer"
+
+const navigation = [
+  { name: 'Inventory', href: '/inventory' },
+  { name: 'Services', href: '/services' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+]
 
 export default function ContactComponent() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
-    <div className="min-h-screen w-full bg-[#0D0D0D] flex items-center justify-center px-6 py-24">
-        {/* Fancy Back Link */}
-      <div className="absolute top-6 left-6 z-50">
-        <Link href="/">
-          <span className="flex items-center bg-[#1a1a1a] hover:bg-[#2c2c2c] text-[#D4AF37] hover:text-yellow-400 font-semibold px-4 py-2 rounded-lg shadow-md cursor-pointer transition duration-200">
-            ← Back
-          </span>
-        </Link>
-      </div>
+    <div className="min-h-screen w-full bg-[#0D0D0D] text-white relative">
+
+      {/* HEADER */}
+      <header className="border-b border-white/10">
+        <nav className="flex items-center justify-between p-6 lg:px-8 relative">
+          {/* Back */}
+          <Link href="/">
+            <span className="flex items-center bg-[#1a1a1a] hover:bg-[#2c2c2c] text-[#D4AF37] hover:text-yellow-400 font-semibold px-4 py-2 rounded-lg shadow-md cursor-pointer transition duration-200">
+              ← Back
+            </span>
+          </Link>
+
+          {/* Desktop nav */}
+          <ul className="hidden lg:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-6">
+            {navigation.map((nav) => (
+              <li key={nav.name}>
+                <Link
+                  href={nav.href}
+                  className="text-sm font-medium tracking-wide uppercase text-white hover:text-[#D4AF37] transition"
+                >
+                  {nav.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Right: Login + Hamburger */}
+          <div className="flex items-center gap-4">
+            <Link
+              href="/signin"
+              className="hidden lg:inline text-sm font-semibold tracking-wide text-white hover:text-[#D4AF37] transition"
+            >
+              Log in →
+            </Link>
+
+            <button
+              className="lg:hidden p-2 rounded-md text-white hover:text-[#D4AF37] hover:bg-gray-800 transition"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
+            </button>
+          </div>
+
+          {/* Mobile menu */}
+          {mobileMenuOpen && (
+            <div className="absolute top-full left-0 w-full bg-[#0D0D0D] flex flex-col items-center gap-4 py-6 lg:hidden border-t border-white/10 z-20">
+              {navigation.map((nav) => (
+                <Link
+                  key={nav.name}
+                  href={nav.href}
+                  className="text-white hover:text-[#D4AF37] font-medium uppercase"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {nav.name}
+                </Link>
+              ))}
+              <Link
+                href="/signin"
+                className="text-white hover:text-[#D4AF37] font-semibold mt-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Log in →
+              </Link>
+            </div>
+          )}
+        </nav>
+      </header>
+
       {/* Background Glow */}
       <div
         aria-hidden="true"
@@ -29,7 +99,7 @@ export default function ContactComponent() {
       </div>
 
       {/* Form Container */}
-      <div className="w-full max-w-xl space-y-8">
+      <div className="w-full max-w-xl mx-auto py-24 space-y-8">
         {/* Header */}
         <div className="text-center">
           <h2 className="text-4xl font-bold text-white sm:text-5xl">Contact Sales</h2>
@@ -40,7 +110,6 @@ export default function ContactComponent() {
 
         {/* Form */}
         <form action="#" method="POST" className="space-y-6">
-          {/* Name Fields */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div>
               <label htmlFor="first-name" className="block text-sm font-semibold text-white">
@@ -52,7 +121,7 @@ export default function ContactComponent() {
                 id="first-name"
                 autoComplete="given-name"
                 placeholder="John"
-                className="mt-2 block w-full rounded-md bg-[#0D0D0D] border-none px-4 py-2 text-white placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-0"
+                className="mt-2 block w-full rounded-md bg-[#0D0D0D] border-none px-4 py-2 text-white placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
               />
             </div>
             <div>
@@ -65,27 +134,23 @@ export default function ContactComponent() {
                 id="last-name"
                 autoComplete="family-name"
                 placeholder="Doe"
-                className="mt-2 block w-full rounded-md bg-[#0D0D0D] border-none px-4 py-2 text-white placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-0"
+                className="mt-2 block w-full rounded-md bg-[#0D0D0D] border-none px-4 py-2 text-white placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
               />
             </div>
           </div>
 
-          {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-sm font-semibold text-white">
-              Email
-            </label>
+            <label htmlFor="email" className="block text-sm font-semibold text-white">Email</label>
             <input
               type="email"
               name="email"
               id="email"
               autoComplete="email"
               placeholder="john.doe@example.com"
-              className="mt-2 block w-full rounded-md bg-[#0D0D0D] border-none px-4 py-2 text-white placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-0"
+              className="mt-2 block w-full rounded-md bg-[#0D0D0D] border-none px-4 py-2 text-white placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
             />
           </div>
 
-          {/* Phone */}
           <div>
             <label htmlFor="phone-number" className="block text-sm font-semibold text-white">
               Phone Number
@@ -95,52 +160,45 @@ export default function ContactComponent() {
               name="phone-number"
               id="phone-number"
               placeholder="123-456-7890"
-              className="mt-2 block w-full rounded-md bg-[#0D0D0D] border-none px-4 py-2 text-white placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-0"
+              className="mt-2 block w-full rounded-md bg-[#0D0D0D] border-none px-4 py-2 text-white placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
             />
           </div>
 
-          {/* Message */}
           <div>
-            <label htmlFor="message" className="block text-sm font-semibold text-white">
-              Message
-            </label>
+            <label htmlFor="message" className="block text-sm font-semibold text-white">Message</label>
             <textarea
               id="message"
               name="message"
               rows={4}
               placeholder="Your message..."
-              className="mt-2 block w-full rounded-md bg-[#0D0D0D] border-none px-4 py-2 text-white placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-0"
+              className="mt-2 block w-full rounded-md bg-[#0D0D0D] border-none px-4 py-2 text-white placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
             />
           </div>
 
-          {/* Checkbox */}
           <div className="flex items-center gap-3">
             <input
               id="agree-to-policies"
               name="agree-to-policies"
               type="checkbox"
-              className="h-4 w-4 rounded border-none text-[#D4AF37] shadow-sm focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-0"
+              className="h-4 w-4 rounded border-none text-[#D4AF37] shadow-sm focus:ring-2 focus:ring-[#D4AF37]"
             />
             <label htmlFor="agree-to-policies" className="text-sm text-gray-300">
               By selecting this, you agree to our{' '}
-              <a href="#" className="font-semibold text-[#D4AF37]">
-                privacy policy
-              </a>
-              .
+              <a href="#" className="font-semibold text-[#D4AF37]">privacy policy</a>.
             </label>
           </div>
 
-          {/* Submit Button */}
-          <button type="submit" className="mt-6 w-full rounded-md bg-[#d4af37] px-4 py-2 text-[#0d0d0d] font-semibold shadow hover:bg-[#c39b30]  focus:ring-[#d4af37] cursor-pointer">
+          <button type="submit" className="mt-6 w-full rounded-md bg-[#D4AF37] px-4 py-2 text-[#0D0D0D] font-semibold shadow hover:bg-[#c39b30]">
             Let us talk
           </button>
         </form>
-        
       </div>
+
+      <Footer />
     </div>
-    
   )
 }
+
 
 
 

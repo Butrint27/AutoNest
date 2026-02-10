@@ -1,20 +1,88 @@
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Footer from "../home_page_components/Footer";
-import Link from "next/link";
+
+const navigation = [
+  { name: 'Inventory', href: '/inventory' },
+  { name: 'Services', href: '/services' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+]
 
 export default function AboutComponents() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
-    <div className="bg-[#0D0D0D] text-white relative">
+    <div className="bg-[#0D0D0D] text-white relative min-h-screen">
 
-      {/* Fancy Back Link */}
-      <div className="absolute top-6 left-6 z-50">
-        <Link href="/">
-          <span className="flex items-center bg-[#1a1a1a] hover:bg-[#2c2c2c] text-[#D4AF37] hover:text-yellow-400 font-semibold px-4 py-2 rounded-lg shadow-md cursor-pointer transition duration-200">
-            ← Back
-          </span>
-        </Link>
-      </div>
+      {/* HEADER */}
+      <header className="border-b border-white/10">
+        <nav className="flex items-center justify-between p-6 lg:px-8 relative">
+          {/* Back */}
+          <Link href="/">
+            <span className="flex items-center bg-[#1a1a1a] hover:bg-[#2c2c2c] text-[#D4AF37] hover:text-yellow-400 font-semibold px-4 py-2 rounded-lg shadow-md cursor-pointer transition duration-200">
+              ← Back
+            </span>
+          </Link>
 
-      
+          {/* Desktop nav */}
+          <ul className="hidden lg:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-6">
+            {navigation.map((nav) => (
+              <li key={nav.name}>
+                <Link
+                  href={nav.href}
+                  className="text-sm font-medium tracking-wide uppercase text-white hover:text-[#D4AF37] transition"
+                >
+                  {nav.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Right: Login + Hamburger */}
+          <div className="flex items-center gap-4">
+            <Link
+              href="/signin"
+              className="hidden lg:inline text-sm font-semibold tracking-wide text-white hover:text-[#D4AF37] transition"
+            >
+              Log in →
+            </Link>
+
+            <button
+              className="lg:hidden p-2 rounded-md text-white hover:text-[#D4AF37] hover:bg-gray-800 transition"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
+            </button>
+          </div>
+
+          {/* Mobile menu */}
+          {mobileMenuOpen && (
+            <div className="absolute top-full left-0 w-full bg-[#0D0D0D] flex flex-col items-center gap-4 py-6 lg:hidden border-t border-white/10 z-20">
+              {navigation.map((nav) => (
+                <Link
+                  key={nav.name}
+                  href={nav.href}
+                  className="text-white hover:text-[#D4AF37] font-medium uppercase"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {nav.name}
+                </Link>
+              ))}
+              <Link
+                href="/signin"
+                className="text-white hover:text-[#D4AF37] font-semibold mt-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Log in →
+              </Link>
+            </div>
+          )}
+        </nav>
+      </header>
 
       {/* Hero Section */}
       <section className="relative bg-black bg-opacity-70 text-center py-32 px-4">
