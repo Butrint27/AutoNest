@@ -14,6 +14,8 @@ export default function AboutComponents() {
         </Link>
       </div>
 
+      
+
       {/* Hero Section */}
       <section className="relative bg-black bg-opacity-70 text-center py-32 px-4">
         <h1 className="text-5xl md:text-7xl font-bold text-[#D4AF37] mb-6">

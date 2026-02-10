@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Footer from '../home_page_components/Footer'
 
 const navigation = [
   { name: 'Inventory', href: '/inventory' },
@@ -311,6 +312,7 @@ export default function InventoryComponents() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   )
 }

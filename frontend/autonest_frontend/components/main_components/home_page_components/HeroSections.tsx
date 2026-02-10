@@ -144,7 +144,7 @@ export default function HeroSection() {
 
           <div className="mt-10 flex justify-center">
             <a
-              href="#"
+              href="/inventory"
               className="
                 rounded-md
                 bg-[#D4AF37]

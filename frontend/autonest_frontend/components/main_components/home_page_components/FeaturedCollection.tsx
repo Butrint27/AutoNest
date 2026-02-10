@@ -84,7 +84,7 @@ export default function FeaturedCollection() {
           </div>
 
           <a
-            href="#"
+            href="/inventory"
             className="mt-4 sm:mt-0 text-[#D4AF37] font-semibold hover:underline"
           >
             View All
