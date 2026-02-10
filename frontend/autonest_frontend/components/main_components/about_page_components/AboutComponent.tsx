@@ -1,8 +1,18 @@
 import Footer from "../home_page_components/Footer";
+import Link from "next/link";
 
 export default function AboutComponents() {
   return (
-    <div className="bg-[#0D0D0D] text-white">
+    <div className="bg-[#0D0D0D] text-white relative">
+
+      {/* Fancy Back Link */}
+      <div className="absolute top-6 left-6 z-50">
+        <Link href="/">
+          <span className="flex items-center bg-[#1a1a1a] hover:bg-[#2c2c2c] text-[#D4AF37] hover:text-yellow-400 font-semibold px-4 py-2 rounded-lg shadow-md cursor-pointer transition duration-200">
+            ← Back
+          </span>
+        </Link>
+      </div>
 
       {/* Hero Section */}
       <section className="relative bg-black bg-opacity-70 text-center py-32 px-4">
@@ -62,7 +72,6 @@ export default function AboutComponents() {
           Our Journey
         </h2>
         <div className="max-w-4xl mx-auto space-y-12">
-          {/* Timeline Entry */}
           <div className="flex items-start gap-6">
             <div className="text-[#D4AF37] font-bold text-xl">2012</div>
             <p className="text-gray-300 text-lg">
@@ -213,4 +222,5 @@ export default function AboutComponents() {
     </div>
   );
 }
+
 
