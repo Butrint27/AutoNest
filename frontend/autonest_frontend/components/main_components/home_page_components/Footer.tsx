@@ -5,7 +5,7 @@ export default function Footer() {
         
         {/* Logo & Description */}
         <div>
-          <h2 className="text-4xl font-bold text-[#D4AF37] mb-6">AutoSalon</h2>
+          <h2 className="text-4xl font-bold text-[#D4AF37] mb-6">AutoNest</h2>
           <p className="text-gray-300">
             Premium auto salon providing top-notch car detailing, styling, and maintenance services.
           </p>
@@ -57,7 +57,7 @@ export default function Footer() {
 
       {/* Bottom Footer */}
       <div className="mt-16 border-t border-gray-700 pt-6 text-gray-400 text-sm text-center">
-        © {new Date().getFullYear()} AutoSalon. All rights reserved.
+        © {new Date().getFullYear()} AutoNest. All rights reserved.
       </div>
     </footer>
   );

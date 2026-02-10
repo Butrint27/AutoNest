@@ -69,7 +69,7 @@ export default function HeroSection() {
           {/* Login (right side) */}
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <a
-              href="#"
+              href="/signin"
               className="
                 text-sm
                 font-semibold

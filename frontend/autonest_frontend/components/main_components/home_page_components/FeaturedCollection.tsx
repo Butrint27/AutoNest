@@ -162,7 +162,7 @@ export default function FeaturedCollection() {
                     <span className="text-white font-bold text-lg">
                       €{car.price.toLocaleString()}
                     </span>
-                    <button className="bg-[#D4AF37] px-4 py-2 rounded text-black hover:bg-yellow-500 transition">
+                    <button className="bg-[#d4af37] px-4 py-2 rounded text-black hover:bg-yellow-500 transition cursor-pointer">
                       Details
                     </button>
                   </div>
