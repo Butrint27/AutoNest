@@ -1,36 +1,48 @@
 "use client";
 
+import Image from "next/image";
+
 export default function LogoClouds() {
   const carBrands = [
-    "https://static.cdnlogo.com/logos/c/41/bmw.svg",
-    "https://static.cdnlogo.com/logos/a/12/audi.svg",
-    "https://static.cdnlogo.com/logos/m/36/mercedes-benz.svg",
-    "https://static.cdnlogo.com/logos/t/03/toyota.svg",
-    "https://static.cdnlogo.com/logos/h/29/honda.svg",
-    "https://static.cdnlogo.com/logos/f/16/ford.svg",
-    "https://static.cdnlogo.com/logos/c/18/chevrolet.svg",
-    "https://static.cdnlogo.com/logos/v/42/volkswagen.svg",
-    "https://static.cdnlogo.com/logos/l/51/lexus.svg",
-    "https://static.cdnlogo.com/logos/p/47/porsche.svg",
+    "/brands/audi_logo.png",
+    "/brands/bmw_logo.png",
+    "/brands/ford_logo.png",
+    "/brands/honda_logo.png",
+    "/brands/mercedes_logo.png",
+    "/brands/mitsubishi_logo.png",
+    "/brands/porsche_logo.png",
+    "/brands/suzuki_logo.png",
+    "/brands/toyota_logo.png",
+    "/brands/volkswagen_logo.png",
+    "/brands/yamaha_logo.png",
   ];
 
+  // Duplicate for infinite scroll
   const logos = [...carBrands, ...carBrands];
 
   return (
-    <div className="bg-[#1a1a1a] py-16 overflow-hidden">
-      <h2 className="text-center text-lg font-semibold text-gray-300 mb-8">
-        Trusted by top car brands
+    <div className="bg-[#111] py-20 overflow-hidden">
+      <h2 className="text-center text-xl font-semibold text-gray-400 mb-12 tracking-wide">
+        Trusted by Top Car Brands
       </h2>
 
-      <div className="relative w-full">
-        <div className="flex animate-marquee whitespace-nowrap items-center">
+      <div className="relative w-full group overflow-hidden">
+        <div className="flex animate-marquee whitespace-nowrap items-center group-hover:[animation-play-state:paused]">
           {logos.map((src, idx) => (
-            <div key={idx} className="mx-8 flex-shrink-0 relative h-16 min-w-[112px]">
-              <img
-                src={src}
-                alt="car brand logo"
-                className="h-16 w-full object-contain grayscale brightness-70"
-              />
+            <div
+              key={idx}
+              className="mx-10 flex-shrink-0 flex items-center justify-center h-24 w-44 transition-transform duration-300 hover:scale-110"
+            >
+              {/* Relative parent required for next/image fill */}
+              <div className="relative h-16 w-36">
+                <Image
+                  src={src}
+                  alt="Car Brand Logo"
+                  fill
+                  className="object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  priority={idx < carBrands.length} // preload first set
+                />
+              </div>
             </div>
           ))}
         </div>
@@ -38,17 +50,24 @@ export default function LogoClouds() {
 
       <style jsx>{`
         @keyframes marquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
         }
+
         .animate-marquee {
           display: flex;
-          animation: marquee 18s linear infinite;
+          animation: marquee 24s linear infinite;
         }
       `}</style>
     </div>
   );
 }
+
+
 
 
 
