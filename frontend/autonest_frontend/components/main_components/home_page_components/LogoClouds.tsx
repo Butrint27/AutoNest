@@ -22,7 +22,7 @@ export default function LogoClouds() {
 
   return (
     <div className="bg-[#111] py-20 overflow-hidden">
-      <h2 className="text-center text-xl font-semibold text-gray-400 mb-12 tracking-wide">
+      <h2 className="text-center text-xl font-semibold text-gray-200 mb-12 tracking-wide">
         Trusted by Top Car Brands
       </h2>
 
