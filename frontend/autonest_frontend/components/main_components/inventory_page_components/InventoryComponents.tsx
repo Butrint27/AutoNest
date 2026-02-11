@@ -12,7 +12,7 @@ const navigation = [
   { name: 'Contact', href: '/contact' },
 ]
 
-const cars = [
+export const cars = [
   {
     id: 1,
     image: '/picture_1.jpg',
@@ -287,10 +287,12 @@ export default function InventoryComponents() {
                     ${car.price.toLocaleString()}
                   </p>
 
-                  {/* Detailed Button */}
-                  <button className="mt-4 px-6 py-2 bg-[#D4AF37] text-black font-semibold rounded-lg hover:bg-[#b38f2d] transition cursor-pointer">
-                    Detailed
-                  </button>
+                 <Link
+                   href={`/inventory/${car.id}`}
+                   className="mt-4 inline-block px-6 py-2 bg-[#D4AF37] text-black font-semibold rounded-lg hover:bg-[#b38f2d] transition cursor-pointer"
+                 >
+                   Detailed
+                  </Link>
                 </div>
               </div>
             ))}
