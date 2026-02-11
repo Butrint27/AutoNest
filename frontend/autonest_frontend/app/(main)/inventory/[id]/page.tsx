@@ -4,8 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Footer from '../../../components/main_components/home_page_components/Footer'
-import { cars } from '../../../components/main_components/inventory_page_components/InventoryComponents'
+import Footer from '../../../../components/main_components/home_page_components/Footer'
+import { cars } from '../../../../components/main_components/inventory_page_components/InventoryComponents'
 
 type AppointmentData = {
   name: string
