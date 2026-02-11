@@ -39,78 +39,89 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
     { name: "Contact", icon: <FaPhone />, href: "/contact" },
   ];
 
-  return (
-    <div className="flex h-screen bg-gray-100 font-sans">
-      {/* Desktop Sidebar */}
-      <div
-        className={`hidden md:flex flex-col bg-gradient-to-b from-[#0D0D0D] via-[#111111] to-[#0D0D0D] text-white transition-all duration-300 shadow-lg ${
-          isOpen ? "w-64" : "w-20"
-        }`}
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between p-6">
-          {isOpen && <h1 className="text-2xl font-bold text-[#D4AF37]">AutoNest</h1>}
-          <button
-            onClick={toggleSidebar}
-            className="text-[#D4AF37] focus:outline-none hover:text-white transition-colors duration-300"
+ return (
+  <div className="min-h-screen bg-gray-100 font-sans">
+    {/* Desktop Sidebar */}
+    <div
+      className={`hidden md:flex fixed top-0 left-0 h-screen flex-col bg-gradient-to-b from-[#0D0D0D] via-[#111111] to-[#0D0D0D] text-white transition-all duration-300 shadow-lg z-40 ${
+        isOpen ? "w-64" : "w-20"
+      }`}
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between p-6">
+        {isOpen && (
+          <h1 className="text-2xl font-bold text-[#D4AF37]">
+            AutoNest
+          </h1>
+        )}
+        <button
+          onClick={toggleSidebar}
+          className="text-[#D4AF37] hover:text-white transition-colors duration-300"
+        >
+          <FaBars size={20} />
+        </button>
+      </div>
+
+      {/* Menu */}
+      <nav className="flex-1 px-4 py-2 space-y-3">
+        {menuItems.map((item) => (
+          <a
+            key={item.name}
+            href={item.href}
+            className="group flex items-center gap-5 px-5 py-3 text-lg font-medium rounded-lg transition-all duration-300 hover:bg-[#D4AF37] hover:text-[#0D0D0D]"
           >
-            <FaBars size={20} />
-          </button>
-        </div>
+            <span>{item.icon}</span>
+            {isOpen && <span>{item.name}</span>}
+          </a>
+        ))}
+      </nav>
+    </div>
 
-        {/* Menu */}
-        <nav className="flex-1 px-4 py-2 space-y-3">
-          {menuItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="group flex items-center gap-5 px-5 py-3 text-lg font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-md hover:bg-[#D4AF37] hover:text-[#0D0D0D]"
-            >
-              <span className="text-lg group-hover:text-[#0D0D0D]">{item.icon}</span>
-              {isOpen && <span>{item.name}</span>}
-            </a>
-          ))}
-        </nav>
+    {/* Mobile Overlay */}
+    {mobileOpen && (
+      <div className="fixed inset-0 z-40 md:hidden bg-black/30 backdrop-blur-sm"></div>
+    )}
+
+    {/* Mobile Sidebar */}
+    <div
+      ref={sidebarRef}
+      className={`fixed inset-y-0 left-0 z-50 md:hidden bg-[#0D0D0D] text-white w-64 flex flex-col shadow-xl transform transition-transform duration-300 ${
+        mobileOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
+    >
+      <div className="flex items-center justify-center p-6 border-b border-[#D4AF37]">
+        <h1 className="text-2xl font-bold text-[#D4AF37]">
+          AutoNest
+        </h1>
       </div>
 
-      {/* Mobile Sidebar Overlay */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-40 md:hidden bg-black/30 backdrop-blur-sm"></div>
-      )}
-      <div
-        ref={sidebarRef}
-        className={`fixed inset-y-0 left-0 z-50 md:hidden bg-[#0D0D0D] text-white w-64 flex flex-col shadow-xl transform transition-transform duration-300 ease-out ${
-          mobileOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        {/* Header */}
-        <div className="flex items-center justify-center p-6 border-b border-[#D4AF37]">
-          <h1 className="text-2xl font-bold text-[#D4AF37]">Auto Salon</h1>
-        </div>
+      <nav className="flex-1 px-4 py-4 space-y-3">
+        {menuItems.map((item) => (
+          <a
+            key={item.name}
+            href={item.href}
+            onClick={() => setMobileOpen(false)}
+            className="flex items-center gap-5 px-5 py-3 text-lg font-medium rounded-lg hover:bg-[#D4AF37] hover:text-[#0D0D0D]"
+          >
+            <span>{item.icon}</span>
+            <span>{item.name}</span>
+          </a>
+        ))}
+      </nav>
+    </div>
 
-        {/* Menu */}
-        <nav className="flex-1 px-4 py-4 space-y-3">
-          {menuItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center gap-5 px-5 py-3 text-lg font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-md hover:bg-[#D4AF37] hover:text-[#0D0D0D]"
-            >
-              <span className="text-lg">{item.icon}</span>
-              <span>{item.name}</span>
-            </a>
-          ))}
-        </nav>
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1 p-6 md:p-10 transition-all duration-300">
+    {/* Main Content */}
+    <div
+      className={`transition-all duration-300 ${
+        isOpen ? "md:ml-64" : "md:ml-20"
+      }`}
+    >
+      <div className="min-h-screen p-6 md:p-10 overflow-y-auto">
         {/* Mobile Hamburger */}
         <div className="md:hidden mb-4">
           <button
             onClick={toggleMobile}
-            className="text-[#0D0D0D] bg-[#D4AF37] p-2 rounded focus:outline-none hover:bg-yellow-500 transition-colors duration-300"
+            className="text-[#0D0D0D] bg-[#D4AF37] p-2 rounded hover:bg-yellow-500 transition-colors duration-300"
           >
             <FaBars size={24} />
           </button>
@@ -122,7 +133,9 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
         </div>
       </div>
     </div>
-  );
+  </div>
+);
+
 }
 
 
