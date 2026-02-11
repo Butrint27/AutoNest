@@ -9,6 +9,7 @@ import { Navigation, Autoplay } from 'swiper/modules'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
+import Link from 'next/link'
 
 const cars = [
   {
@@ -162,9 +163,12 @@ export default function FeaturedCollection() {
                     <span className="text-white font-bold text-lg">
                       €{car.price.toLocaleString()}
                     </span>
-                    <button className="bg-[#d4af37] px-4 py-2 rounded text-black hover:bg-yellow-500 transition cursor-pointer">
-                      Details
-                    </button>
+                    <Link
+                   href={`/inventory/${car.id}`}
+                   className="mt-4 inline-block px-6 py-2 bg-[#D4AF37] text-black font-semibold rounded-lg hover:bg-[#b38f2d] transition cursor-pointer"
+                 >
+                   Detailed
+                  </Link>
                   </div>
                 </div>
 

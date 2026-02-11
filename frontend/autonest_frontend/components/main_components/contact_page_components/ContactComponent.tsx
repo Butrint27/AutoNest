@@ -187,7 +187,7 @@ export default function ContactComponent() {
             </label>
           </div>
 
-          <button type="submit" className="mt-6 w-full rounded-md bg-[#D4AF37] px-4 py-2 text-[#0D0D0D] font-semibold shadow hover:bg-[#c39b30]">
+          <button type="submit" className="mt-6 w-full rounded-md bg-[#D4AF37] px-4 py-2 text-[#0D0D0D] font-semibold shadow hover:bg-[#c39b30] cursor-pointer">
             Let us talk
           </button>
         </form>

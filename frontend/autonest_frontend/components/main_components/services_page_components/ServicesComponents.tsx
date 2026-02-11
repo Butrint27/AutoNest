@@ -156,7 +156,7 @@ export default function ServicesComponents() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsLoggedIn(!isLoggedIn)}
-              className="hidden lg:inline text-sm font-semibold tracking-wide text-white hover:text-[#D4AF37] transition"
+              className="hidden lg:inline text-sm font-semibold tracking-wide text-white hover:text-[#D4AF37] transition cursor-pointer"
             >
               {isLoggedIn ? 'Logout →' : 'Login →'}
             </button>
@@ -268,7 +268,7 @@ export default function ServicesComponents() {
             />
             <button
               type="submit"
-              className="mt-2 bg-[#D4AF37] text-[#0D0D0D] font-semibold py-3 rounded-lg hover:bg-yellow-400 transition"
+              className="mt-2 bg-[#D4AF37] text-[#0D0D0D] font-semibold py-3 rounded-lg hover:bg-yellow-400 transition cursor-pointer"
             >
               Submit Car
             </button>
@@ -280,7 +280,7 @@ export default function ServicesComponents() {
             </p>
             <button
               onClick={() => setIsLoggedIn(true)}
-              className="bg-[#D4AF37] text-[#0D0D0D] font-semibold py-3 px-6 rounded-lg hover:bg-yellow-400 transition"
+              className="bg-[#D4AF37] text-[#0D0D0D] font-semibold py-3 px-6 rounded-lg hover:bg-yellow-400 transition cursor-pointer"
             >
               Simulate Login
             </button>
