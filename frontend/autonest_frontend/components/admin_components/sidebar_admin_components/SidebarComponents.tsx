@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from "react";
-import { FaHome, FaCar, FaTools, FaPhone, FaBars } from "react-icons/fa";
+import { FaHome, FaTools, FaPhone, FaBars, FaUsers } from "react-icons/fa";
 
 interface SidebarLayoutProps {
   children: React.ReactNode;
@@ -34,7 +34,7 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
 
   const menuItems = [
     { name: "Home", icon: <FaHome />, href: "/dashboard" },
-    { name: "Cars", icon: <FaCar />, href: "/cars" },
+    { name: "Users", icon: <FaUsers />, href: "/users" },
     { name: "Services", icon: <FaTools />, href: "/services" },
     { name: "Contact", icon: <FaPhone />, href: "/contact" },
   ];
