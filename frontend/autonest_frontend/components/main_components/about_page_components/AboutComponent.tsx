@@ -48,7 +48,7 @@ export default function AboutComponents() {
               href="/signin"
               className="hidden lg:inline text-sm font-semibold tracking-wide text-white hover:text-[#D4AF37] transition"
             >
-              Log in →
+              Login →
             </Link>
 
             <button
@@ -77,7 +77,7 @@ export default function AboutComponents() {
                 className="text-white hover:text-[#D4AF37] font-semibold mt-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Log in →
+                Login →
               </Link>
             </div>
           )}

@@ -282,7 +282,7 @@ export default function ServicesComponents() {
               onClick={() => setIsLoggedIn(true)}
               className="bg-[#D4AF37] text-[#0D0D0D] font-semibold py-3 px-6 rounded-lg hover:bg-yellow-400 transition cursor-pointer"
             >
-              Simulate Login
+              Login
             </button>
           </div>
         )}

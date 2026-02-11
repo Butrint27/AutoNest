@@ -79,7 +79,7 @@ export default function HeroSection() {
                 transition
               "
             >
-              Log in <span aria-hidden="true">→</span>
+              Login <span aria-hidden="true">→</span>
             </a>
           </div>
         </nav>
@@ -115,10 +115,10 @@ export default function HeroSection() {
                 </a>
               ))}
               <a
-                href="#"
+                href="/signin"
                 className="block text-lg font-semibold text-[#D4AF37]"
               >
-                Log in →
+                Login →
               </a>
             </div>
           </DialogPanel>
