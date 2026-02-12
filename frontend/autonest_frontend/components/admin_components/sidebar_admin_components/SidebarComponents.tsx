@@ -47,7 +47,7 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
         { name: "Used Cars", href: "/cars/used" },
       ],
     },
-    { name: "Services", icon: <BsChatLeftTextFill />, href: "/services" },
+    { name: "Services", icon: <BsChatLeftTextFill />, href: "/admin_services" },
     { name: "Contact", icon: <FaPhone />, href: "/admin_contact" },
   ];
 

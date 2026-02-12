@@ -266,7 +266,7 @@ export default function CarsNew() {
                 <h2 className="text-2xl font-semibold text-white">{editingCar ? "Edit Car" : "Add Car"}</h2>
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="text-white hover:text-[#D4AF37] font-bold text-xl"
+                  className="text-white hover:text-[#D4AF37] font-bold text-xl cursor-pointer"
                 >
                   ×
                 </button>
