@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { BsChatLeftTextFill } from "react-icons/bs";
-import { FaHome, FaTools, FaPhone, FaBars, FaUsers, FaChevronDown, FaChevronUp, FaCalendarAlt } from "react-icons/fa";
+import { FaHome, FaPhone, FaBars, FaUsers, FaChevronDown, FaChevronUp, FaCalendarAlt } from "react-icons/fa";
 import { IoCarSportSharp, IoNewspaper, IoNotifications } from "react-icons/io5";
 
 interface SidebarLayoutProps {

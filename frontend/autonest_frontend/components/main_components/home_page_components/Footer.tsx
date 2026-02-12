@@ -38,19 +38,19 @@ export default function Footer() {
         <div>
           <h3 className="text-2xl font-semibold text-[#D4AF37] mb-6">Subscribe</h3>
           <p className="text-gray-300 mb-4">Get the latest updates and offers directly in your inbox.</p>
-          <form className="flex flex-col sm:flex-row sm:items-center gap-3">
-            <input 
-              type="email" 
-              placeholder="Your email" 
-              className="p-3 rounded-md flex-1 max-w-[220px] text-gray-800 bg-gray-200 placeholder-gray-500"
-            />
-            <button 
-              type="submit" 
-              className="bg-[#D4AF37] text-black font-bold px-6 py-3 rounded-md hover:bg-yellow-600 hover:scale-105 transition transform cursor-pointer"
-            >
-              Subscribe
-            </button>
-          </form>
+         <form className="flex flex-col gap-3">
+  <input 
+    type="email" 
+    placeholder="Your email" 
+    className="p-3 rounded-md w-full max-w-[220px] text-gray-800 bg-gray-200 placeholder-gray-500"
+  />
+  <button 
+    type="submit" 
+    className="bg-[#D4AF37] text-black font-bold px-6 py-3 rounded-md hover:bg-yellow-600 hover:scale-105 transition transform cursor-pointer w-full max-w-[220px]"
+  >
+    Subscribe
+  </button>
+</form>
         </div>
 
       </div>

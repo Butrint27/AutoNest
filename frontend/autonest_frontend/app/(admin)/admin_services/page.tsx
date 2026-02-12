@@ -253,13 +253,13 @@ export default function AdminCarSubmissions() {
               <div className="flex gap-2">
                 <button
                   onClick={handleApprove}
-                  className="px-4 py-2 rounded-xl bg-green-200 text-green-800 font-semibold hover:bg-green-300 transition"
+                  className="px-4 py-2 rounded-xl bg-green-200 text-green-800 font-semibold hover:bg-green-300 transition cursor-pointer"
                 >
                   Approve
                 </button>
                 <button
                   onClick={handleReject}
-                  className="px-4 py-2 rounded-xl bg-red-200 text-red-800 font-semibold hover:bg-red-300 transition"
+                  className="px-4 py-2 rounded-xl bg-red-200 text-red-800 font-semibold hover:bg-red-300 transition cursor-pointer"
                 >
                   Reject
                 </button>
