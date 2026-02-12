@@ -36,7 +36,7 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
     { name: "Home", icon: <FaHome />, href: "/dashboard" },
     { name: "Users", icon: <FaUsers />, href: "/users" },
     { name: "Services", icon: <FaTools />, href: "/services" },
-    { name: "Contact", icon: <FaPhone />, href: "/contact" },
+    { name: "Contact", icon: <FaPhone />, href: "/admin_contact" },
   ];
 
  return (
