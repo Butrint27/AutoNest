@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BsChatLeftTextFill } from "react-icons/bs";
 import { FaHome, FaTools, FaPhone, FaBars, FaUsers, FaChevronDown, FaChevronUp, FaCalendarAlt } from "react-icons/fa";
-import { IoCarSportSharp, IoNotifications } from "react-icons/io5";
+import { IoCarSportSharp, IoNewspaper, IoNotifications } from "react-icons/io5";
 
 interface SidebarLayoutProps {
   children: React.ReactNode;
@@ -50,6 +50,7 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
     { name: "Services", icon: <BsChatLeftTextFill />, href: "/admin_services" },
     { name: "Notification", icon: <IoNotifications />, href: "/notification" },
     { name: "Appointment", icon: <FaCalendarAlt />, href: "/appointment" },
+    { name: "News", icon: <IoNewspaper />, href: "/admin_news" },
     { name: "Contact", icon: <FaPhone />, href: "/admin_contact" },
   ];
 
