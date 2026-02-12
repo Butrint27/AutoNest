@@ -4,12 +4,14 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 
 const navigation = [
   { name: 'Inventory', href: '/inventory' },
   { name: 'Services', href: '/services' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
+  { name: 'News', href: '/news' },
 ]
 
 export default function HeroSection() {
@@ -143,9 +145,9 @@ export default function HeroSection() {
           </p>
 
           <div className="mt-10 flex justify-center">
-            <a
-              href="/inventory"
-              className="
+            <Link
+             href="/inventory"
+             className="
                 rounded-md
                 bg-[#D4AF37]
                 px-8
@@ -155,10 +157,10 @@ export default function HeroSection() {
                 text-black
                 hover:opacity-90
                 transition
-              "
+             "
             >
-              Explore Inventory
-            </a>
+             Explore Inventory
+            </Link>
           </div>
         </div>
       </main>

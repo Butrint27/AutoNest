@@ -11,6 +11,7 @@ const navigation = [
   { name: 'Services', href: '/services' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
+  { name: 'News', href: '/news' },
 ]
 
 // Sample user cars data (simulate multiple cars)

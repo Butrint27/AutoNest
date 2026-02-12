@@ -10,6 +10,7 @@ const navigation = [
   { name: 'Services', href: '/services' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
+  { name: 'News', href: '/news' },
 ]
 
 export default function AboutComponents() {
@@ -279,12 +280,12 @@ export default function AboutComponents() {
         <p className="text-gray-300 mb-6">
           Browse our hand‑picked inventory or visit us in person for a VIP experience.
         </p>
-        <a
+        <Link
           href="/inventory"
           className="inline-block bg-[#D4AF37] text-black font-semibold px-8 py-3 rounded-xl hover:bg-yellow-500 transition"
         >
           View Inventory
-        </a>
+        </Link>
       </section>
 
       <Footer />
