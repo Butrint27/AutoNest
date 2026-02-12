@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { BsChatLeftTextFill } from "react-icons/bs";
-import { FaHome, FaTools, FaPhone, FaBars, FaUsers, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaHome, FaTools, FaPhone, FaBars, FaUsers, FaChevronDown, FaChevronUp, FaCalendarAlt } from "react-icons/fa";
 import { IoCarSportSharp } from "react-icons/io5";
 
 interface SidebarLayoutProps {
@@ -48,6 +48,7 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
       ],
     },
     { name: "Services", icon: <BsChatLeftTextFill />, href: "/admin_services" },
+    { name: "Appointment", icon: <FaCalendarAlt />, href: "/appointment" },
     { name: "Contact", icon: <FaPhone />, href: "/admin_contact" },
   ];
 
