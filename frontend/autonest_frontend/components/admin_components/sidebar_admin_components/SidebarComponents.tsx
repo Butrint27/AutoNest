@@ -3,7 +3,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BsChatLeftTextFill } from "react-icons/bs";
 import { FaHome, FaPhone, FaBars, FaUsers, FaChevronDown, FaChevronUp, FaCalendarAlt } from "react-icons/fa";
+import { FaCircleUser } from "react-icons/fa6";
 import { IoCarSportSharp, IoNewspaper, IoNotifications } from "react-icons/io5";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 
 interface SidebarLayoutProps {
   children: React.ReactNode;
@@ -31,7 +33,6 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
         setMobileOpen(false);
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [mobileOpen]);
@@ -52,10 +53,36 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
     { name: "Appointment", icon: <FaCalendarAlt />, href: "/appointment" },
     { name: "News", icon: <IoNewspaper />, href: "/admin_news" },
     { name: "Contact", icon: <FaPhone />, href: "/admin_contact" },
+    { name: "Profile", icon: <FaCircleUser />, href: "/admin_profile" },
+    { name: "Logout", icon: <RiLogoutCircleRLine />, href: "/" },
   ];
 
   return (
     <div className="min-h-screen bg-gray-100 font-sans">
+      {/* Professional Scrollbar Style */}
+      <style>
+        {`
+          .sidebar-scrollbar::-webkit-scrollbar {
+            width: 6px;
+          }
+          .sidebar-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+          }
+          .sidebar-scrollbar::-webkit-scrollbar-thumb {
+            background-color: rgba(212, 175, 55, 0.2);
+            border-radius: 9999px;
+            transition: background-color 0.3s;
+          }
+          .sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(212, 175, 55, 0.5);
+          }
+          .sidebar-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(212, 175, 55, 0.2) transparent;
+          }
+        `}
+      </style>
+
       {/* Desktop Sidebar */}
       <div
         className={`hidden md:flex fixed top-0 left-0 h-screen flex-col bg-gradient-to-b from-[#0D0D0D] via-[#111111] to-[#0D0D0D] text-white transition-all duration-300 shadow-lg z-40 ${
@@ -75,8 +102,8 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
           </button>
         </div>
 
-        {/* Menu */}
-        <nav className="flex-1 px-4 py-2 space-y-3">
+        {/* Menu with professional scrollbar */}
+        <nav className="flex-1 px-4 py-2 space-y-3 overflow-y-auto sidebar-scrollbar">
           {menuItems.map((item) => (
             <div key={item.name}>
               {item.subItems ? (
@@ -135,7 +162,7 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
           <h1 className="text-2xl font-bold text-[#D4AF37]">AutoNest</h1>
         </div>
 
-        <nav className="flex-1 px-4 py-4 space-y-3">
+        <nav className="flex-1 px-4 py-4 space-y-3 overflow-y-auto sidebar-scrollbar">
           {menuItems.map((item) => (
             <div key={item.name}>
               {item.subItems ? (
@@ -204,6 +231,9 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
     </div>
   );
 }
+
+
+
 
 
 
