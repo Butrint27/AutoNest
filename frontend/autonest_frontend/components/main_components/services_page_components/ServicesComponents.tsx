@@ -189,6 +189,7 @@ export default function ServicesComponents() {
     drivetrain: '',
     torque: '',
     acceleration: '',
+    topspeed: '',
     transmission: '',
     suspension: '',
     brakes: '',
@@ -204,7 +205,11 @@ export default function ServicesComponents() {
     infotainment: '',
     soundSystem: '',
 
-    safety: '',
+    airbargs: '',
+    lane: '',
+    adaptive: '',
+    collision: '',
+    parking: ''
   })
 
   const [currentPage, setCurrentPage] = useState(1)
