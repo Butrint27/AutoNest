@@ -243,34 +243,69 @@ export default function ServicesComponents() {
     <div className="bg-[#0D0D0D] text-white min-h-screen flex flex-col">
       {/* HEADER */}
       <header className="border-b border-white/10">
-        <nav className="flex items-center justify-between p-6 lg:px-8 relative">
-          <Link href="/">
-            <span className="flex items-center bg-[#1a1a1a] hover:bg-[#2c2c2c] text-[#D4AF37] font-semibold px-4 py-2 rounded-lg shadow-md cursor-pointer transition">
-              ← Back
-            </span>
-          </Link>
+  <nav className="flex items-center justify-between p-6 lg:px-16 relative">
+    
+    {/* LEFT: Back Button */}
+    <Link href="/">
+      <span className="flex items-center bg-[#1a1a1a] hover:bg-[#2c2c2c] text-[#D4AF37] font-semibold px-4 py-2 rounded-lg shadow-md cursor-pointer transition">
+        ← Back
+      </span>
+    </Link>
 
-          <ul className="hidden lg:flex absolute left-1/2 gap-6">
-            {navigation.map((nav) => (
-              <li key={nav.name}>
-                <Link
-                  href={nav.href}
-                  className="text-sm uppercase text-white hover:text-[#D4AF37]"
-                >
-                  {nav.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <button
-            onClick={() => setIsLoggedIn(!isLoggedIn)}
-            className="text-sm font-semibold hover:text-[#D4AF37]"
+    {/* CENTER: Navigation */}
+    <ul className="hidden lg:flex gap-8 mx-auto">
+      {navigation.map((nav) => (
+        <li key={nav.name}>
+          <Link
+            href={nav.href}
+            className="text-sm uppercase text-white hover:text-[#D4AF37] transition"
           >
-            {isLoggedIn ? 'Logout →' : 'Login →'}
-          </button>
-        </nav>
-      </header>
+            {nav.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+
+    {/* RIGHT: Login/Logout */}
+    <button
+      onClick={() => setIsLoggedIn(!isLoggedIn)}
+      className="text-sm font-semibold hover:text-[#D4AF37] transition"
+    >
+      {isLoggedIn ? 'Logout →' : 'Login →'}
+    </button>
+
+    {/* MOBILE MENU BUTTON */}
+    <button
+      className="lg:hidden ml-4"
+      onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+    >
+      {mobileMenuOpen ? (
+        <XMarkIcon className="h-6 w-6 text-white" />
+      ) : (
+        <Bars3Icon className="h-6 w-6 text-white" />
+      )}
+    </button>
+  </nav>
+
+  {/* MOBILE MENU */}
+  {mobileMenuOpen && (
+    <div className="lg:hidden bg-[#1a1a1a] p-4">
+      <ul className="flex flex-col gap-4">
+        {navigation.map((nav) => (
+          <li key={nav.name}>
+            <Link
+              href={nav.href}
+              className="text-white text-base hover:text-[#D4AF37] transition"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {nav.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</header>
 
       {/* FORM */}
       <div className="flex justify-center px-6 py-16">
