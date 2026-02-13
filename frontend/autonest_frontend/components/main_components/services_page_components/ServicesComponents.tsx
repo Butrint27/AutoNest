@@ -14,7 +14,7 @@ const navigation = [
   { name: 'News', href: '/news' },
 ]
 
-// Sample user cars data (simulate multiple cars)
+// Expanded user cars for paginator test
 const userCars = [
   {
     id: 1,
@@ -35,7 +35,8 @@ const userCars = [
   },
   {
     id: 3,
-    image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg',
+    image:
+      'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg',
     title: 'Tesla Model S Plaid',
     details: 'All-electric sedan with insane acceleration.',
     performance: { horsepower: 1020, topSpeed: 322, fuel: 0 },
@@ -43,7 +44,8 @@ const userCars = [
   },
   {
     id: 4,
-    image: 'https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg',
+    image:
+      'https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg',
     title: 'BMW M5 Competition',
     details: 'High-performance sports sedan.',
     performance: { horsepower: 617, topSpeed: 305, fuel: 12.0 },
@@ -51,7 +53,8 @@ const userCars = [
   },
   {
     id: 5,
-    image: 'https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg',
+    image:
+      'https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg',
     title: 'Audi e-tron GT',
     details: 'All-electric grand tourer.',
     performance: { horsepower: 469, topSpeed: 245, fuel: 0 },
@@ -59,33 +62,118 @@ const userCars = [
   },
   {
     id: 6,
-    image: 'https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg',
+    image:
+      'https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg',
     title: 'Range Rover Sport',
     details: 'Luxury SUV with off-road capability.',
     performance: { horsepower: 518, topSpeed: 250, fuel: 13.0 },
     price: 110000,
   },
+  // extra cars for pagination test
   {
     id: 7,
-    image: 'https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg',
-    title: 'Lamborghini Huracán',
-    details: 'Exotic supercar built for speed.',
-    performance: { horsepower: 631, topSpeed: 325, fuel: 15 },
-    price: 240000,
+    image: 'https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg',
+    title: 'Ferrari F8 Tributo',
+    details: 'Twin-turbo V8 supercar with track-level performance.',
+    performance: { horsepower: 710, topSpeed: 340, fuel: 15.5 },
+    price: 280000,
   },
   {
     id: 8,
-    image: 'https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg',
-    title: 'Ferrari F8',
-    details: 'Precision-engineered Italian masterpiece.',
-    performance: { horsepower: 710, topSpeed: 340, fuel: 14 },
-    price: 280000,
+    image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg',
+    title: 'Lamborghini Huracan EVO',
+    details: 'Naturally aspirated V10 masterpiece.',
+    performance: { horsepower: 631, topSpeed: 325, fuel: 14.0 },
+    price: 260000,
+  },
+  {
+    id: 9,
+    image: 'https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg',
+    title: 'McLaren 720S',
+    details: 'Lightweight carbon fiber supercar.',
+    performance: { horsepower: 710, topSpeed: 341, fuel: 14.5 },
+    price: 300000,
+  },
+  {
+    id: 10,
+    image: 'https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg',
+    title: 'Bentley Continental GT',
+    details: 'Luxury grand tourer with W12 power.',
+    performance: { horsepower: 650, topSpeed: 333, fuel: 16.0 },
+    price: 220000,
+  },
+  {
+    id: 11,
+    image: 'https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg',
+    title: 'Aston Martin DB11',
+    details: 'Elegant British V8 performance.',
+    performance: { horsepower: 528, topSpeed: 309, fuel: 12.5 },
+    price: 205000,
+  },
+  {
+    id: 12,
+    image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg',
+    title: 'Chevrolet Corvette C8',
+    details: 'Mid-engine American sports car.',
+    performance: { horsepower: 495, topSpeed: 312, fuel: 11.5 },
+    price: 85000,
+  },
+  {
+    id: 13,
+    image: 'https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg',
+    title: 'Nissan GT-R Nismo',
+    details: 'Legendary Japanese performance machine.',
+    performance: { horsepower: 600, topSpeed: 315, fuel: 14.0 },
+    price: 210000,
+  },
+  {
+    id: 14,
+    image: 'https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg',
+    title: 'Rolls-Royce Ghost',
+    details: 'Ultimate ultra-luxury sedan.',
+    performance: { horsepower: 563, topSpeed: 250, fuel: 15.0 },
+    price: 330000,
+  },
+  {
+    id: 15,
+    image: 'https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg',
+    title: 'Bugatti Chiron',
+    details: 'Quad-turbo W16 hypercar.',
+    performance: { horsepower: 1500, topSpeed: 420, fuel: 22.0 },
+    price: 3000000,
+  },
+  {
+    id: 16,
+    image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg',
+    title: 'Toyota Supra GR',
+    details: 'Modern revival of the JDM icon.',
+    performance: { horsepower: 382, topSpeed: 250, fuel: 9.8 },
+    price: 58000,
+  },
+  {
+    id: 17,
+    image: 'https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg',
+    title: 'Ford Mustang GT',
+    details: '5.0L V8 American muscle.',
+    performance: { horsepower: 450, topSpeed: 250, fuel: 12.0 },
+    price: 55000,
+  },
+  {
+    id: 18,
+    image: 'https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg',
+    title: 'Alfa Romeo Giulia Quadrifoglio',
+    details: 'Ferrari-derived twin-turbo V6.',
+    performance: { horsepower: 505, topSpeed: 307, fuel: 11.5 },
+    price: 82000,
   },
 ]
 
 export default function ServicesComponents() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false) // Simulated login
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const carsPerPage = 6
+
   const [carData, setCarData] = useState({
     title: '',
     details: '',
@@ -94,19 +182,40 @@ export default function ServicesComponents() {
     fuel: '',
     price: '',
     image: null as File | null,
+    // Extra fields
+    engineType: '',
+    drivetrain: '',
+    torque: '',
+    zeroToHundred: '',
+    transmission: '',
+    suspension: '',
+    brakes: '',
+    fuelType: '',
+    consumption: '',
+    evRange: '',
+    charging: '',
+    seats: '',
+    climate: '',
+    cabin: '',
+    infotainment: '',
+    audio: '',
+    airbags: '',
+    laneAssist: '',
+    cruiseControl: '',
+    collision: '',
+    parking: '',
   })
 
-  const [currentPage, setCurrentPage] = useState(1)
-  const carsPerPage = 6
-
-  // Pagination
+  // Pagination logic
   const totalPages = Math.ceil(userCars.length / carsPerPage)
   const paginatedCars = userCars.slice(
     (currentPage - 1) * carsPerPage,
     currentPage * carsPerPage
   )
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target
     setCarData((prev) => ({ ...prev, [name]: value }))
   }
@@ -118,7 +227,7 @@ export default function ServicesComponents() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log(carData)
-    alert('Car submitted! (Design simulation only)')
+    alert('Car submitted! (Simulation only)')
     setCarData({
       title: '',
       details: '',
@@ -127,6 +236,27 @@ export default function ServicesComponents() {
       fuel: '',
       price: '',
       image: null,
+      engineType: '',
+      drivetrain: '',
+      torque: '',
+      zeroToHundred: '',
+      transmission: '',
+      suspension: '',
+      brakes: '',
+      fuelType: '',
+      consumption: '',
+      evRange: '',
+      charging: '',
+      seats: '',
+      climate: '',
+      cabin: '',
+      infotainment: '',
+      audio: '',
+      airbags: '',
+      laneAssist: '',
+      cruiseControl: '',
+      collision: '',
+      parking: '',
     })
   }
 
@@ -166,7 +296,11 @@ export default function ServicesComponents() {
               className="lg:hidden p-2 rounded-md text-white hover:text-[#D4AF37] hover:bg-gray-800 transition"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
+              {mobileMenuOpen ? (
+                <XMarkIcon className="h-6 w-6" />
+              ) : (
+                <Bars3Icon className="h-6 w-6" />
+              )}
             </button>
           </div>
 
@@ -183,7 +317,10 @@ export default function ServicesComponents() {
                 </Link>
               ))}
               <button
-                onClick={() => { setIsLoggedIn(!isLoggedIn); setMobileMenuOpen(false) }}
+                onClick={() => {
+                  setIsLoggedIn(!isLoggedIn)
+                  setMobileMenuOpen(false)
+                }}
                 className="text-white hover:text-[#D4AF37] font-semibold mt-2"
               >
                 {isLoggedIn ? 'Logout →' : 'Login →'}
@@ -206,12 +343,15 @@ export default function ServicesComponents() {
       </div>
 
       {/* MAIN CONTENT */}
-      <div className="flex justify-center px-6 mb-16">
-        {isLoggedIn ? (
+      {isLoggedIn ? (
+        <div className="flex justify-center px-6 mb-16">
+          {/* Multi-step form component can go here (your current one) */}
+          {/* For brevity, I’m keeping this placeholder */}
           <form
             onSubmit={handleSubmit}
-            className="bg-[#1a1a1a] p-8 rounded-xl w-full max-w-lg flex flex-col gap-4"
+            className="bg-[#1a1a1a] p-8 rounded-xl w-full max-w-3xl flex flex-col gap-6"
           >
+            {/* Step 1: Basic info */}
             <input
               type="text"
               placeholder="Car Model / Title"
@@ -267,6 +407,7 @@ export default function ServicesComponents() {
               onChange={handleImageChange}
               className="px-4 py-3 rounded-lg bg-[#0D0D0D] border border-white/10 focus:border-[#D4AF37] outline-none text-gray-300"
             />
+
             <button
               type="submit"
               className="mt-2 bg-[#D4AF37] text-[#0D0D0D] font-semibold py-3 rounded-lg hover:bg-yellow-400 transition cursor-pointer"
@@ -274,41 +415,55 @@ export default function ServicesComponents() {
               Submit Car
             </button>
           </form>
-        ) : (
+        </div>
+      ) : (
+        <div className="flex justify-center px-6 mb-16">
           <div className="bg-[#1a1a1a] p-8 rounded-xl w-full max-w-md flex flex-col gap-4 items-center">
             <p className="text-gray-300 text-center">
-              You need to be logged in to submit a car.
+              You must be logged in to list a vehicle.
             </p>
             <button
               onClick={() => setIsLoggedIn(true)}
               className="bg-[#D4AF37] text-[#0D0D0D] font-semibold py-3 px-6 rounded-lg hover:bg-yellow-400 transition cursor-pointer"
             >
-              Login
+              Login →
             </button>
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
-      {/* USER CAR HISTORY WITH PAGINATION */}
+      {/* PAGINATED CAR SECTION */}
       {isLoggedIn && (
         <div className="px-6 mb-16">
-          <h2 className="text-3xl font-semibold mb-6 text-center">Your Listed Cars</h2>
+          <h2 className="text-3xl font-semibold mb-6 text-center">
+            Your Listed Cars
+          </h2>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {paginatedCars.map((car) => (
               <div
                 key={car.id}
                 className="bg-[#1a1a1a] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition"
               >
-                <img src={car.image} alt={car.title} className="w-full h-48 object-cover" />
+                <img
+                  src={car.image}
+                  alt={car.title}
+                  className="w-full h-48 object-cover"
+                />
+
                 <div className="p-4 flex flex-col gap-2">
                   <h3 className="text-lg font-semibold">{car.title}</h3>
                   <p className="text-gray-300 text-sm">{car.details}</p>
+
                   <div className="text-sm flex justify-between text-gray-400 mt-2">
                     <span>HP: {car.performance.horsepower}</span>
                     <span>Top: {car.performance.topSpeed} km/h</span>
                     <span>Fuel: {car.performance.fuel} L/100km</span>
                   </div>
-                  <p className="text-[#D4AF37] font-bold mt-2">${car.price.toLocaleString()}</p>
+
+                  <p className="text-[#D4AF37] font-bold mt-2">
+                    ${car.price.toLocaleString()}
+                  </p>
                 </div>
               </div>
             ))}
@@ -327,11 +482,15 @@ export default function ServicesComponents() {
             >
               Prev
             </button>
+
             <span className="flex items-center text-gray-300 font-semibold">
               Page {currentPage} of {totalPages}
             </span>
+
             <button
-              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
               disabled={currentPage === totalPages}
               className={`px-4 py-2 rounded-lg ${
                 currentPage === totalPages
@@ -349,5 +508,8 @@ export default function ServicesComponents() {
     </div>
   )
 }
+
+
+
 
 
