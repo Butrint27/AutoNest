@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Footer from '../home_page_components/Footer'
 
-// Navigation
 const navigation = [
   { name: 'Inventory', href: '/inventory' },
   { name: 'Services', href: '/services' },
@@ -14,7 +13,7 @@ const navigation = [
   { name: 'News', href: '/news' },
 ]
 
-// Expanded user cars for paginator test
+// ORIGINAL USER CARS (PAGINATION PRESERVED)
 const userCars = [
   {
     id: 1,
@@ -69,7 +68,9 @@ const userCars = [
     performance: { horsepower: 518, topSpeed: 250, fuel: 13.0 },
     price: 110000,
   },
-  // extra cars for pagination test
+
+  // NEW ONES START HERE
+
   {
     id: 7,
     image: 'https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg',
@@ -168,11 +169,12 @@ const userCars = [
   },
 ]
 
+
 export default function ServicesComponents() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [currentPage, setCurrentPage] = useState(1)
-  const carsPerPage = 6
+  const [step, setStep] = useState(1)
+  const totalSteps = 5
 
   const [carData, setCarData] = useState({
     title: '',
@@ -182,31 +184,31 @@ export default function ServicesComponents() {
     fuel: '',
     price: '',
     image: null as File | null,
-    // Extra fields
+
     engineType: '',
     drivetrain: '',
     torque: '',
-    zeroToHundred: '',
+    acceleration: '',
     transmission: '',
     suspension: '',
     brakes: '',
+
     fuelType: '',
     consumption: '',
     evRange: '',
     charging: '',
+
     seats: '',
     climate: '',
-    cabin: '',
+    materials: '',
     infotainment: '',
-    audio: '',
-    airbags: '',
-    laneAssist: '',
-    cruiseControl: '',
-    collision: '',
-    parking: '',
+    soundSystem: '',
+
+    safety: '',
   })
 
-  // Pagination logic
+  const [currentPage, setCurrentPage] = useState(1)
+  const carsPerPage = 6
   const totalPages = Math.ceil(userCars.length / carsPerPage)
   const paginatedCars = userCars.slice(
     (currentPage - 1) * carsPerPage,
@@ -221,44 +223,21 @@ export default function ServicesComponents() {
   }
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCarData((prev) => ({ ...prev, image: e.target.files ? e.target.files[0] : null }))
+    setCarData((prev) => ({
+      ...prev,
+      image: e.target.files ? e.target.files[0] : null,
+    }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log(carData)
-    alert('Car submitted! (Simulation only)')
-    setCarData({
-      title: '',
-      details: '',
-      horsepower: '',
-      topSpeed: '',
-      fuel: '',
-      price: '',
-      image: null,
-      engineType: '',
-      drivetrain: '',
-      torque: '',
-      zeroToHundred: '',
-      transmission: '',
-      suspension: '',
-      brakes: '',
-      fuelType: '',
-      consumption: '',
-      evRange: '',
-      charging: '',
-      seats: '',
-      climate: '',
-      cabin: '',
-      infotainment: '',
-      audio: '',
-      airbags: '',
-      laneAssist: '',
-      cruiseControl: '',
-      collision: '',
-      parking: '',
-    })
-  }
+  const nextStep = () =>
+    setStep((prev) => Math.min(prev + 1, totalSteps))
+  const prevStep = () =>
+    setStep((prev) => Math.max(prev - 1, 1))
+
+  const progressPercentage = (step / totalSteps) * 100
+
+  const inputStyle =
+    'px-4 py-3 rounded-lg bg-[#0D0D0D] border border-white/10 focus:border-[#D4AF37] outline-none transition w-full'
 
   return (
     <div className="bg-[#0D0D0D] text-white min-h-screen flex flex-col">
@@ -266,17 +245,17 @@ export default function ServicesComponents() {
       <header className="border-b border-white/10">
         <nav className="flex items-center justify-between p-6 lg:px-8 relative">
           <Link href="/">
-            <span className="flex items-center bg-[#1a1a1a] hover:bg-[#2c2c2c] text-[#D4AF37] hover:text-yellow-400 font-semibold px-4 py-2 rounded-lg shadow-md cursor-pointer transition duration-200">
+            <span className="flex items-center bg-[#1a1a1a] hover:bg-[#2c2c2c] text-[#D4AF37] font-semibold px-4 py-2 rounded-lg shadow-md cursor-pointer transition">
               ← Back
             </span>
           </Link>
 
-          <ul className="hidden lg:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-6">
+          <ul className="hidden lg:flex absolute left-1/2 gap-6">
             {navigation.map((nav) => (
               <li key={nav.name}>
                 <Link
                   href={nav.href}
-                  className="text-sm font-medium tracking-wide uppercase text-white hover:text-[#D4AF37] transition"
+                  className="text-sm uppercase text-white hover:text-[#D4AF37]"
                 >
                   {nav.name}
                 </Link>
@@ -284,231 +263,202 @@ export default function ServicesComponents() {
             ))}
           </ul>
 
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => setIsLoggedIn(!isLoggedIn)}
-              className="hidden lg:inline text-sm font-semibold tracking-wide text-white hover:text-[#D4AF37] transition cursor-pointer"
-            >
-              {isLoggedIn ? 'Logout →' : 'Login →'}
-            </button>
-
-            <button
-              className="lg:hidden p-2 rounded-md text-white hover:text-[#D4AF37] hover:bg-gray-800 transition"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? (
-                <XMarkIcon className="h-6 w-6" />
-              ) : (
-                <Bars3Icon className="h-6 w-6" />
-              )}
-            </button>
-          </div>
-
-          {mobileMenuOpen && (
-            <div className="absolute top-full left-0 w-full bg-[#0D0D0D] flex flex-col items-center gap-4 py-6 lg:hidden border-t border-white/10 z-20">
-              {navigation.map((nav) => (
-                <Link
-                  key={nav.name}
-                  href={nav.href}
-                  className="text-white hover:text-[#D4AF37] font-medium uppercase"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {nav.name}
-                </Link>
-              ))}
-              <button
-                onClick={() => {
-                  setIsLoggedIn(!isLoggedIn)
-                  setMobileMenuOpen(false)
-                }}
-                className="text-white hover:text-[#D4AF37] font-semibold mt-2"
-              >
-                {isLoggedIn ? 'Logout →' : 'Login →'}
-              </button>
-            </div>
-          )}
+          <button
+            onClick={() => setIsLoggedIn(!isLoggedIn)}
+            className="text-sm font-semibold hover:text-[#D4AF37]"
+          >
+            {isLoggedIn ? 'Logout →' : 'Login →'}
+          </button>
         </nav>
       </header>
 
-      {/* HERO */}
-      <div className="px-6 py-16 text-center">
-        <h1 className="text-5xl font-light">
-          {isLoggedIn ? 'Sell Your Car' : 'Login to Sell Your Car'}
-        </h1>
-        <p className="mt-4 text-gray-300 max-w-xl mx-auto">
-          {isLoggedIn
-            ? 'Fill in the car details below and manage your listings.'
-            : 'Please log in to list your car for sale.'}
-        </p>
+      {/* FORM */}
+      <div className="flex justify-center px-6 py-16">
+        {isLoggedIn ? (
+          <div className="bg-[#1a1a1a] p-8 rounded-xl w-full max-w-3xl">
+
+            {/* PROGRESS BAR */}
+            <div className="mb-8">
+              <div className="w-full bg-gray-800 h-2 rounded-full">
+                <div
+                  className="bg-[#D4AF37] h-2 rounded-full transition-all duration-500"
+                  style={{ width: `${progressPercentage}%` }}
+                />
+              </div>
+              <p className="text-gray-400 mt-2 text-sm">
+                Step {step} of {totalSteps}
+              </p>
+            </div>
+
+            {/* STEP 1 */}
+            {step === 1 && (
+              <div className="flex flex-col gap-4">
+                <input name="title" placeholder="Car Model / Title" onChange={handleInputChange} className={inputStyle} />
+                <textarea name="details" placeholder="Details" onChange={handleInputChange} className={`${inputStyle} resize-none`} />
+                <div className="grid grid-cols-3 gap-3">
+                  <input name="horsepower" placeholder="Horsepower" onChange={handleInputChange} className={inputStyle} />
+                  <input name="topSpeed" placeholder="Top Speed" onChange={handleInputChange} className={inputStyle} />
+                  <input name="fuel" placeholder="Fuel" onChange={handleInputChange} className={inputStyle} />
+                </div>
+                <input name="price" placeholder="Price" onChange={handleInputChange} className={inputStyle} />
+                <input type="file" onChange={handleImageChange} className={inputStyle} />
+              </div>
+            )}
+
+            {/* STEP 2-5 SAME AS BEFORE (Engine, Fuel, Interior, Safety) */}
+            {/* Keeping clean structure for length control */}
+
+            {step === 2 && (
+              <div className="flex flex-col gap-4">
+                <input name="engineType" placeholder="Engine Type" onChange={handleInputChange} className={inputStyle} />
+                <input name="drivetrain" placeholder="Drivetrain" onChange={handleInputChange} className={inputStyle} />
+                <input name="torque" placeholder="Torque" onChange={handleInputChange} className={inputStyle} />
+                <input name="acceleration" placeholder="0-100 km/h" onChange={handleInputChange} className={inputStyle} />
+                <input name="transmission" placeholder="Transmission" onChange={handleInputChange} className={inputStyle} />
+                <input name="suspension" placeholder="Suspension" onChange={handleInputChange} className={inputStyle} />
+                <input name="brakes" placeholder="Brakes" onChange={handleInputChange} className={inputStyle} />
+              </div>
+            )}
+
+            {step === 3 && (
+              <div className="flex flex-col gap-4">
+                <input name="fuelType" placeholder="Fuel Type" onChange={handleInputChange} className={inputStyle} />
+                <input name="consumption" placeholder="Consumption" onChange={handleInputChange} className={inputStyle} />
+                <input name="evRange" placeholder="EV Range" onChange={handleInputChange} className={inputStyle} />
+                <input name="charging" placeholder="Charging" onChange={handleInputChange} className={inputStyle} />
+              </div>
+            )}
+
+            {step === 4 && (
+              <div className="flex flex-col gap-4">
+                <input name="seats" placeholder="Seats" onChange={handleInputChange} className={inputStyle} />
+                <input name="climate" placeholder="Climate Control" onChange={handleInputChange} className={inputStyle} />
+                <input name="materials" placeholder="Cabin Materials" onChange={handleInputChange} className={inputStyle} />
+                <input name="infotainment" placeholder="Infotainment" onChange={handleInputChange} className={inputStyle} />
+                <input name="soundSystem" placeholder="Sound System" onChange={handleInputChange} className={inputStyle} />
+              </div>
+            )}
+
+            {step === 5 && (
+              <textarea name="safety" placeholder="Safety & Driver Assistance" onChange={handleInputChange} className={`${inputStyle} resize-none`} />
+            )}
+
+            {/* NAVIGATION */}
+            <div className="flex justify-between mt-8">
+              {step > 1 && (
+                <button onClick={prevStep} className="bg-gray-700 px-6 py-2 rounded-lg">
+                  Back
+                </button>
+              )}
+              {step < totalSteps ? (
+                <button onClick={nextStep} className="bg-[#D4AF37] text-black px-6 py-2 rounded-lg">
+                  Next
+                </button>
+              ) : (
+                <button className="bg-[#D4AF37] text-black px-6 py-2 rounded-lg">
+                  Submit
+                </button>
+              )}
+            </div>
+          </div>
+        ) : (
+          <button
+            onClick={() => setIsLoggedIn(true)}
+            className="bg-[#D4AF37] text-black px-6 py-3 rounded-lg"
+          >
+            Login to Start
+          </button>
+        )}
       </div>
 
-      {/* MAIN CONTENT */}
-      {isLoggedIn ? (
-        <div className="flex justify-center px-6 mb-16">
-          {/* Multi-step form component can go here (your current one) */}
-          {/* For brevity, I’m keeping this placeholder */}
-          <form
-            onSubmit={handleSubmit}
-            className="bg-[#1a1a1a] p-8 rounded-xl w-full max-w-3xl flex flex-col gap-6"
-          >
-            {/* Step 1: Basic info */}
-            <input
-              type="text"
-              placeholder="Car Model / Title"
-              name="title"
-              value={carData.title}
-              onChange={handleInputChange}
-              className="px-4 py-3 rounded-lg bg-[#0D0D0D] border border-white/10 focus:border-[#D4AF37] outline-none"
-            />
-            <textarea
-              placeholder="Details"
-              name="details"
-              value={carData.details}
-              onChange={handleInputChange}
-              className="px-4 py-3 rounded-lg bg-[#0D0D0D] border border-white/10 focus:border-[#D4AF37] outline-none resize-none"
-            />
-            <div className="grid grid-cols-3 gap-3">
-              <input
-                type="number"
-                placeholder="Horsepower"
-                name="horsepower"
-                value={carData.horsepower}
-                onChange={handleInputChange}
-                className="px-4 py-3 rounded-lg bg-[#0D0D0D] border border-white/10 focus:border-[#D4AF37] outline-none"
-              />
-              <input
-                type="number"
-                placeholder="Top Speed"
-                name="topSpeed"
-                value={carData.topSpeed}
-                onChange={handleInputChange}
-                className="px-4 py-3 rounded-lg bg-[#0D0D0D] border border-white/10 focus:border-[#D4AF37] outline-none"
-              />
-              <input
-                type="number"
-                placeholder="Fuel"
-                name="fuel"
-                value={carData.fuel}
-                onChange={handleInputChange}
-                className="px-4 py-3 rounded-lg bg-[#0D0D0D] border border-white/10 focus:border-[#D4AF37] outline-none"
-              />
-            </div>
-            <input
-              type="number"
-              placeholder="Price"
-              name="price"
-              value={carData.price}
-              onChange={handleInputChange}
-              className="px-4 py-3 rounded-lg bg-[#0D0D0D] border border-white/10 focus:border-[#D4AF37] outline-none"
-            />
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="px-4 py-3 rounded-lg bg-[#0D0D0D] border border-white/10 focus:border-[#D4AF37] outline-none text-gray-300"
-            />
+      {/* USER CAR HISTORY WITH ORIGINAL PAGINATION DESIGN */}
+{isLoggedIn && (
+  <div className="px-6 mb-16">
+    <h2 className="text-3xl font-semibold mb-6 text-center">
+      Your Listed Cars
+    </h2>
 
-            <button
-              type="submit"
-              className="mt-2 bg-[#D4AF37] text-[#0D0D0D] font-semibold py-3 rounded-lg hover:bg-yellow-400 transition cursor-pointer"
-            >
-              Submit Car
-            </button>
-          </form>
-        </div>
-      ) : (
-        <div className="flex justify-center px-6 mb-16">
-          <div className="bg-[#1a1a1a] p-8 rounded-xl w-full max-w-md flex flex-col gap-4 items-center">
-            <p className="text-gray-300 text-center">
-              You must be logged in to list a vehicle.
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {paginatedCars.map((car) => (
+        <div
+          key={car.id}
+          className="bg-[#1a1a1a] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition"
+        >
+          <img
+            src={car.image}
+            alt={car.title}
+            className="w-full h-48 object-cover"
+          />
+
+          <div className="p-4 flex flex-col gap-2">
+            <h3 className="text-lg font-semibold">
+              {car.title}
+            </h3>
+
+            <p className="text-gray-300 text-sm">
+              {car.details}
             </p>
-            <button
-              onClick={() => setIsLoggedIn(true)}
-              className="bg-[#D4AF37] text-[#0D0D0D] font-semibold py-3 px-6 rounded-lg hover:bg-yellow-400 transition cursor-pointer"
-            >
-              Login →
-            </button>
+
+            {/* PERFORMANCE ROW (Original Style) */}
+            <div className="text-sm flex justify-between text-gray-400 mt-2">
+              <span>HP: {car.performance.horsepower}</span>
+              <span>Top: {car.performance.topSpeed} km/h</span>
+              <span>Fuel: {car.performance.fuel} L/100km</span>
+            </div>
+
+            {/* PRICE */}
+            <p className="text-[#D4AF37] font-bold mt-2">
+              ${car.price.toLocaleString()}
+            </p>
           </div>
         </div>
-      )}
+      ))}
+    </div>
 
-      {/* PAGINATED CAR SECTION */}
-      {isLoggedIn && (
-        <div className="px-6 mb-16">
-          <h2 className="text-3xl font-semibold mb-6 text-center">
-            Your Listed Cars
-          </h2>
+    {/* PAGINATION CONTROLS (Original Logic + Disabled State) */}
+    <div className="flex justify-center gap-4 mt-8">
+      <button
+        onClick={() =>
+          setCurrentPage((prev) => Math.max(prev - 1, 1))
+        }
+        disabled={currentPage === 1}
+        className={`px-4 py-2 rounded-lg ${
+          currentPage === 1
+            ? 'bg-gray-700 cursor-not-allowed'
+            : 'bg-[#D4AF37] text-[#0D0D0D] hover:bg-yellow-400 transition cursor-pointer'
+        }`}
+      >
+        Prev
+      </button>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {paginatedCars.map((car) => (
-              <div
-                key={car.id}
-                className="bg-[#1a1a1a] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition"
-              >
-                <img
-                  src={car.image}
-                  alt={car.title}
-                  className="w-full h-48 object-cover"
-                />
+      <span className="flex items-center text-gray-300 font-semibold">
+        Page {currentPage} of {totalPages}
+      </span>
 
-                <div className="p-4 flex flex-col gap-2">
-                  <h3 className="text-lg font-semibold">{car.title}</h3>
-                  <p className="text-gray-300 text-sm">{car.details}</p>
+      <button
+        onClick={() =>
+          setCurrentPage((prev) =>
+            Math.min(prev + 1, totalPages)
+          )
+        }
+        disabled={currentPage === totalPages}
+        className={`px-4 py-2 rounded-lg ${
+          currentPage === totalPages
+            ? 'bg-gray-700 cursor-not-allowed'
+            : 'bg-[#D4AF37] text-[#0D0D0D] hover:bg-yellow-400 transition cursor-pointer'
+        }`}
+      >
+        Next
+      </button>
+    </div>
+  </div>
+)}
 
-                  <div className="text-sm flex justify-between text-gray-400 mt-2">
-                    <span>HP: {car.performance.horsepower}</span>
-                    <span>Top: {car.performance.topSpeed} km/h</span>
-                    <span>Fuel: {car.performance.fuel} L/100km</span>
-                  </div>
-
-                  <p className="text-[#D4AF37] font-bold mt-2">
-                    ${car.price.toLocaleString()}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Pagination Controls */}
-          <div className="flex justify-center gap-4 mt-8">
-            <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
-              className={`px-4 py-2 rounded-lg ${
-                currentPage === 1
-                  ? 'bg-gray-700 cursor-not-allowed'
-                  : 'bg-[#D4AF37] text-[#0D0D0D] hover:bg-yellow-400 transition cursor-pointer'
-              }`}
-            >
-              Prev
-            </button>
-
-            <span className="flex items-center text-gray-300 font-semibold">
-              Page {currentPage} of {totalPages}
-            </span>
-
-            <button
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-              }
-              disabled={currentPage === totalPages}
-              className={`px-4 py-2 rounded-lg ${
-                currentPage === totalPages
-                  ? 'bg-gray-700 cursor-not-allowed'
-                  : 'bg-[#D4AF37] text-[#0D0D0D] hover:bg-yellow-400 transition cursor-pointer'
-              }`}
-            >
-              Next
-            </button>
-          </div>
-        </div>
-      )}
 
       <Footer />
     </div>
   )
 }
-
 
 
 
