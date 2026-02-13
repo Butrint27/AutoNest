@@ -381,16 +381,16 @@ export default function ServicesComponents() {
             {/* NAVIGATION */}
             <div className="flex justify-between mt-8">
               {step > 1 && (
-                <button onClick={prevStep} className="bg-gray-700 px-6 py-2 rounded-lg">
+                <button onClick={prevStep} className="bg-gray-700 px-6 py-2 rounded-lg cursor-pointer">
                   Back
                 </button>
               )}
               {step < totalSteps ? (
-                <button onClick={nextStep} className="bg-[#D4AF37] text-black px-6 py-2 rounded-lg">
+                <button onClick={nextStep} className="bg-[#D4AF37] text-black px-6 py-2 rounded-lg cursor-pointer">
                   Next
                 </button>
               ) : (
-                <button className="bg-[#D4AF37] text-black px-6 py-2 rounded-lg">
+                <button className="bg-[#D4AF37] text-black px-6 py-2 rounded-lg cursor-pointer">
                   Submit
                 </button>
               )}
