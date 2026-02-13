@@ -375,7 +375,13 @@ export default function ServicesComponents() {
             )}
 
             {step === 5 && (
-              <textarea name="safety" placeholder="Safety & Driver Assistance" onChange={handleInputChange} className={`${inputStyle} resize-none`} />
+              <div className="flex flex-col gap-4">
+                <input name="airbags" placeholder="Airbags" onChange={handleInputChange} className={inputStyle} />
+                <input name="lane" placeholder="Lane Assist & Blind Spot Monitoring" onChange={handleInputChange} className={inputStyle} />
+                <input name="adaptive" placeholder="Adaptive Cruise Control" onChange={handleInputChange} className={inputStyle} />
+                <input name="collusion" placeholder="Collision" onChange={handleInputChange} className={inputStyle} />
+                <input name="parking" placeholder="Parking Sensors" onChange={handleInputChange} className={inputStyle} />
+              </div>
             )}
 
             {/* NAVIGATION */}
