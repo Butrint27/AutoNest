@@ -349,6 +349,7 @@ export default function ServicesComponents() {
                 <input name="drivetrain" placeholder="Drivetrain" onChange={handleInputChange} className={inputStyle} />
                 <input name="torque" placeholder="Torque" onChange={handleInputChange} className={inputStyle} />
                 <input name="acceleration" placeholder="0-100 km/h" onChange={handleInputChange} className={inputStyle} />
+                <input name="speed" placeholder="Top-Speed" onChange={handleInputChange} className={inputStyle} />
                 <input name="transmission" placeholder="Transmission" onChange={handleInputChange} className={inputStyle} />
                 <input name="suspension" placeholder="Suspension" onChange={handleInputChange} className={inputStyle} />
                 <input name="brakes" placeholder="Brakes" onChange={handleInputChange} className={inputStyle} />
